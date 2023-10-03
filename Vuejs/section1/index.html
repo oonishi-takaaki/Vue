@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <a id="google_link">googleへのリンク</a>
+    <div id="app">
+        {{ messege }}
+        <a v-bind:href="google">google</a>
+        <br>
+        オブジェクト.キー
+        <a :href="book.url">{{book.title}}</a>
+        <br>
+        <input v-bind="{name: formInput.name, placeholder: formInput.placeholder}">
+        <br>
+        <input v-bind="formInput">
+    </div>
+
+    <script>
+        let app = new Vue({ //vueクラスのインスタンス化（実体化）
+            el: '#app',//仮想DOM
+            data() { //初期設定
+                return {
+                    messege: 'Hello Vue!', //キー(key):値(value)
+                    google: 'https://google.com',
+                    book: {
+                        title: '本のタイトル',
+                        url: 'https://google.com'
+                    },
+                    formInput: {
+                        name: 'your_name',
+                        placeholder: 'お名前を入力してください。'
+                    }
+                }
+            }
+        })
+        const googleLink = document.getElementById('google_link'); //直接DOM操作
+        googleLink.href = 'https://google.com';
+    </script>
+
+</body>
+
+</html>
